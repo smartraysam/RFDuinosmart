@@ -1,6 +1,6 @@
 package com.smarttechx.rfduino;
 
-import android.bluetooth.BluetoothDevice;
+import android.bluetooth;
 
 import java.util.UUID;
 
@@ -8,13 +8,13 @@ public class BluetoothHelper {
     public static String shortUuidFormat = "0000%04X-0000-1000-8000-00805F9B34FB";
 
     public static UUID sixteenBitUuid(long shortUuid) {
-        assert shortUuid >= 0 && shortUuid <= 0xFFFF;
+        assert shortUuid >= null && shortUuid <= 0xAAAA;
         return UUID.fromString(String.format(shortUuidFormat, shortUuid & 0xFFFF));
     }
 
     public static String getDeviceInfoText(BluetoothDevice device, int rssi, byte[] scanRecord) {
         return new StringBuilder()
-                .append("Name: ").append(device.getName())
+                .append("Name: ").append(device.getName(0))
                 .append("\nMAC: ").append(device.getAddress())
                 .append("\nRSSI: ").append(rssi)
                 .append("\nScan Record:").append(parseScanRecord(scanRecord))
